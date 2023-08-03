@@ -1,0 +1,130 @@
+
+
+
+Pre-requisites:
+
+1. An AWS T2.small EC2 instance (Linux)
+2 .Open port 8081 and 8082 in the security group
+
+Installation Steps:
+
+ yum install java-1.8* -y 
+ 
+Download the artifactory server.
+cd /opt 
+wget https://jfrog.bintray.com/artifactory/jfrog-artifactory-oss-6.9.6.zip
+
+Extract the file
+unzip jfrog-artifactory-oss-6.9.6.zip
+
+cd /opt/jfrog-artifactory-oss-6.9.6/bin
+
+start the artifactory server
+
+./artifactory.sh start
+
+Access the artifactory server
+http://<PUBLIC_IP_Address>:8081 
+
+Provide the credential
+
+username: admin
+password: passwrod 
+
+1 create a repository 
+
+2 go to set me up
+
+upload using REST API
+
+curl -u"${USERNAME}:${PASSWORD}" -XPUT "${ARTIFACTORY_URL}/artifactory/${REPO_KEY}/${GROUP_ID}/${ARTIFACT_ID}/${VERSION}/${FILE_NAME}.${EXTENSION}" -T "${LOCAL_FILE_PATH}"
+EX:
+curl -u admin:password -XPUT http://3.26.205.157:8081/artifactory/Maven_Sample/ -T AWSDevops-2.0.0.war
+copy the code into source code
+
+<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>ip-172-31-23-215.ap-southeast-2.compute.internal-releases</name>
+        <url>http://3.26.205.157:8081/artifactory/Maven_Sample</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>ip-172-31-23-215.ap-southeast-2.compute.internal-snapshots</name>
+        <url>http://3.26.205.157:8081/artifactory/Maven_Sample</url>
+    </snapshotRepository>
+</distributionManagement>
+
+you will get the settings.xml file content from below link
+https://www.baeldung.com/maven-settings-xml
+
+
+cat ~/.m2/settings.xml 
+<settings>
+        <profiles>
+                <profile>
+                        <id>default</id>
+                        <repositories>
+                                <repository>
+                                        <id>central</id>
+                                        <name>Maven_Sample</name>
+                                        <url>http://3.26.205.157:8081/artifactory/Maven_Sample</url>
+                                        <releases>
+                                                <enabled>false</enabled>
+                                        </releases>
+                                        <snapshots>
+                                                <enabled>true</enabled>
+                                                <updatePolicy>always</updatePolicy>
+                                        </snapshots>
+                                </repository>
+                        </repositories>
+                </profile>
+        </profiles>
+        <activeProfiles>
+                <activeProfile>default</activeProfile>
+        </activeProfiles>
+        <servers>
+                <server>
+                        <id>central</id>
+                        <username>admin</username>
+                        <password>password</password>
+                </server>
+        </servers>
+</settings>
+
+
+When dealing with Jenkins
+
+List of plugin need to install
+maven integration
+conditional build steps
+Deploy to container
+Envirnment injector
+Git Parameter
+gitlab branch source
+github branch source
+maven plugin (Maven Integration)
+
+SSH server
+GITHUB
+GITHUBRANCH SOURCE      GITHUBRANCH
+
+
+.wAR  --> REMOTE 
+.WAR --> LOCAL REPO 
+
+TEAMS WAR 
+
+httops; .//////
+htpp:////
+
+virtauls :
+single rpo 
+
+wget https://IP:/devops.war
+ wget https://IP:/ishaq.war
+ 
+ 2things
+ 
+1)  pom.xml change
+2) ~/.m2/settings.xml  configuration karna padta

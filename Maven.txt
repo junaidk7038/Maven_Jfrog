@@ -1,0 +1,94 @@
+Build Tool: It will manage the dependency:
+
+c ,c++ : Make 
+.net : visual studio
+Java : Ant , maven, gradle
+
+Programe /software: 1.py ,1.sh ,1.c ,1.cpp ,1.java  ,1.perl
+
+1.sh 1000
+
+1.sh 2.sh 3.sh 4.sh .5.sh 6.sh   --> binary --> display outpit
+depency: 2.sh 
+
+./1.sh ./2.sh ../3.sh /.4.sh   ---
+
+echo "Hi everyone"   //computer /machine  compiler/interpretor  --> Machine Understandable 
+
+./1.sh --> 10000001000  --> Hi everyone
+
+
+binary : 10101010101010001
+
+Build tool take care of everything for building a process it does following.
+
+it is used to manage the dependency which is required to build our source code to generate the final execuatble/binaray file/package.
+
+1) Generate the source code
+2) Generate documentatrion from source code
+3) Compile source code
+4) Install package code in local repo or server repo or central repo.
+
+p-> project
+o -> obejct
+m--> model
+5) pom referes to the xml files that have all the information regarding project and configuration details.
+   pom.xml it is main configuration file
+   
+pom.xml contains:
+1) metadata
+2) kind of project 
+3) dependencies
+4) kind of output ( jar ,war,.Apk,.exe,....)
+
+Requirment for build: 
+
+Source code    (present in workspace)
+compiler      (remote repo - local repo - workspace)
+dependencies (remote repo - local repo - workspace)
+
+Local repo: it refers tfo machine of the developer where all the project material is saved
+
+remote repo:this repo present on webserver which is used when maven needs to download dependencies
+it work same as central repo
+
+central repo: it referes to maven community thats come into action when there is a NEED Of dependenciesand the cant ound in local repository.
+
+maven life cycle
+
+mvn clean       machine clean 
+mvn validate     // v-10  // v=10
+mvn compile     //    
+mvn test  -DskipTests   // test case 1: Bluetoooth Blutooth_On()  ==1  ""bluteothis working fine"
+mvn package+  // main.c function.c  myprogram    k.c l.c myprogaram1    
+mvn verify
+mvn install    // exetcubale file ..
+mvn deploy
+mvn release
+
+mvn clean   #clean previous binary
+mvn clean install  # clean previous binary and insatll into local repo
+mvn package -Dskiptests  #
+
+mvn test
+mvn build 
+
+mvn clean install = mvn clean + mvn build + mvn test 
+
+
+
+
+Maven: Its a Project management tools (It will Manage the Java based project)
+or its an Automation and project management tool developed by Apache foundation it is based on pom(project object model)
+
+Dependency: it referes to java libraries that are needed for the project
+
+Repositories: directory/folder of packackeg jar file.
+
+Apache maven helps to manage
+Build
+Dependency
+Reports
+Releases
+Distribution
+
